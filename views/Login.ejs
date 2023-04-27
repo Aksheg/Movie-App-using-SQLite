@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/stylesheets/signUpStyle.css">
+
+	<title>Login Page</title>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+		  <h1>Login</h1>
+		  <form method="POST" action="/users/login">
+			<label for="email">Email</label>
+			<% if (locals.error) { %>
+				<% if (error === "email is not allowed to be empty") { %>
+					<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				"><%= error%></div>
+			   <% } %>
+
+			<% } %>
+
+		   <% if (locals.error) { %>
+			<% if (error.includes("Email already exists")) { %>
+			  <p class="error">Email is already taken.</p>
+			<% } else if (error === "Invalid email/password"){ %>
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				">please input correct email/password</div>
+			<% } %>
+		  <% } %>
+			<input type="email" name="email" id="email">
+			
+			<label for="password">Password</label>
+			<% if(locals.error){ %>
+				<% if(error === 'password is not allowed to be empty'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				"><%= error%></div>
+			   <% } %>
+
+			<% } %>
+			<input type="password" name="password" id="password">
+			
+			<div class="accept">
+			  Don't have an account? <a href="/register">Sign up<a>
+			</div>
+			<!-- <div class="back-home">
+				 <a href="/">Back to Home</a>
+			  </div> -->
+				
+			<input class="button" type="submit" value="Login" style="background-color: darkblue; color: white;">
+		  </form>
+		   
+		</div>
+		
+		<div class="right"></div>
+		
+	  </div>
+</body>
+</html>

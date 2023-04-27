@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/stylesheets/signUpStyle.css">
+
+	<title>Register page</title>
+</head>
+<body>
+	<div class="container">
+		<div class="left">
+		  <h1>Sign Up</h1>
+		  <p>create a new account</p>
+
+		  <form method="POST" action="/users/register">
+			<label for="name">Name</label>
+			<% if(locals.error){ %>
+				<% if(error === 'firstName is not allowed to be empty'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				">Name is not allowed to be empty</div>
+			   <% } %>
+
+			<% } %>
+			<input type="text" name="firstName" id="name">
+
+			<label for="username">User name</label>
+			<% if(locals.error){ %>
+				<% if(error === 'userName is not allowed to be empty'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				">User name is not allowed to be empty</div>
+			   <% } %>
+
+			<% } %>
+			<input type="text" name="userName" id="username">
+
+			<label for="email">Email</label>
+			<% if(locals.error){ %>
+				<% if(error === 'email is not allowed to be empty'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				"><%= error%></div>
+			   <% } else if (locals.error) {%>
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				">Email already exist please change</div>
+				<% } %>
+			<% } %>
+			<input type="email" name="email" id="email">
+			
+			<label for="password">Password</label>
+			<% if(locals.error){ %>
+				<% if(error === 'password is not allowed to be empty'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				"><%= error%></div>
+			   <% } %>
+
+			<% } %>
+			<input type="password" name="password" id="password">
+			
+			<label for="confirm">Confirm Password</label>
+			<% if(locals.error){ %>
+				<% if(error === 'Confirm password does not match'){ %>
+
+				<div style="
+				color: #ff0099;
+				margin: 10px 2px;
+				font-size: 0.8em;
+				font-weight: bold;
+				"><%= error%></div>
+			   <% } %>
+
+			<% } %>
+			<input type="password" name="confirm_password" id="confirm">
+			
+			<div class="accept">
+			  Already a member? <a href="/login">Login<a></label>
+			</div>
+
+
+				
+			<input class="button" type="submit" value="Sign Up" style="background-color: darkblue; color: white;">
+
+		  </form>
+		  
+		</div>
+		
+		<div class="right"></div>
+		
+	  </div>
+</body>
+
+
+</html>
